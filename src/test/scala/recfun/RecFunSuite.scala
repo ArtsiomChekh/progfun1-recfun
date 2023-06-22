@@ -21,10 +21,22 @@ class RecFunSuite extends munit.FunSuite:
     assert(!balance("())(".toList))
   }
 
+  test("balance: (") {
+    assert(!balance("(".toList))
+  }
+
+  test("balance: (*") {
+    assert(!balance("(*".toList))
+  }
+
   // ------ countChange tests -------------------------------------------------
 
   test("countChange: example given in instructions") {
     assertEquals(countChange(4,List(1,2)), 3)
+  }
+
+  test("countChange:  given 6") {
+    assertEquals(countChange(6,List(1,2)), 4)
   }
 
   test("countChange: sorted CHF") {
