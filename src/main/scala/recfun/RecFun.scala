@@ -32,22 +32,20 @@ object RecFun extends RecFunInterface:
         if e == '(' then
           isBalanced(remainderChars.tail, opened + 1)
         else if e == ')' then
-          if opened == 0 then
-            false
-          else
-            isBalanced(remainderChars.tail, opened - 1)
+          opened != 0 && isBalanced(remainderChars.tail, opened - 1)
         else
           isBalanced(remainderChars.tail, opened)
 
     isBalanced(chars, 0)
 
-
   /**
    * Exercise 3
    */
   def countChange(money: Int, coins: List[Int]): Int =
-    if money == 0 then 1
-    else if  money < 0 || coins.isEmpty then 0
+    if money == 0 then
+      1
+    else if money < 0 || coins.isEmpty then
+      0
     else
       countChange(money - coins.head, coins) + countChange(money, coins.tail)
 
